@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WhoAmIRequest: Codable {
+struct WhoAmIResponse: Decodable {
     let id: String
     let displayName: String
 }

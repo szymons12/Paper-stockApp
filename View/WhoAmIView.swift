@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct WhoAmIView: View {
+    @StateObject private var viewModel = WhoAmIViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+        Text(viewModel.displayName)
+            .foregroundColor(.black)
+            .task {
+               await viewModel.fetchCurrentUser()
+            }}
 }
 
 #Preview {

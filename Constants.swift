@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+enum Constants {
+    static let baseUrl = "http://localhost:8080/api"
+}

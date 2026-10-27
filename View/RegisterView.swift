@@ -8,11 +8,52 @@
 import SwiftUI
 
 struct RegisterView: View {
+    
+    @StateObject private var viewModel = RegisterViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            Form{
+                Section("Dane konta") {
+                    TextField("Nazwa użytkownika", text: $viewModel.displayName)
+                    
+                    TextField("Email", text: $viewModel.email)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                    
+                    SecureField("Hasło", text: $viewModel.password)
+                }
+                
+                
+                Section {
+                    Button {
+                        Task { await viewModel.register() }
+                    } label: {
+                        if  viewModel.isLoading {
+                            ProgressView()
+                                .frame(maxWidth: .infinity)
+                        } else {
+                            Text("Zarejestruj się")
+                                .frame(maxWidth: .infinity)
+                        }
+                    }
+                }
+                
+                if viewModel.isRegistered {
+                    Section {
+                        Label("Rejestracja udana!", systemImage: "checkmark.circle.fill")
+                            .foregroundStyle(.green)
+                    }
+                }
+                if let error = viewModel.errorMessage{
+                    Section {
+                        Label(error, systemImage: "xmark.circle.fill")
+                            .foregroundStyle(.red)
+                    }
+                    
+                }
+                
+            }.navigationTitle("Rejestracja")
+        }
     }
-}
-
-#Preview {
-    RegisterView()
 }

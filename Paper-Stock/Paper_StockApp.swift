@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct Paper_StockApp: App {
+    @StateObject private var loginViewModel = LoginViewModel()
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
+         WindowGroup {
+             if loginViewModel.isAuthenticated {
+//                CandlesView(symbol: "TSLA")
+                 Top10View()
+                     .environmentObject(loginViewModel)
+             }
+             
+             else {
+                 LoginView()
+                     .environmentObject(loginViewModel)
+             }
+         }
+     }
+    
+ }

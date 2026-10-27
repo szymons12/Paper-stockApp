@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct RegisterRequest: Codable {
+    let displayName: String
+    let email: String
+    let password: String
+}
+

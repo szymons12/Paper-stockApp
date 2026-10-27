@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct LogoutButton: View {
+    @EnvironmentObject private var viewModel: LoginViewModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button("Wyloguj", role: .destructive) {
+            viewModel.logout()
+        }
     }
 }
-
 #Preview {
     LogoutButton()
 }

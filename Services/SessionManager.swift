@@ -6,3 +6,21 @@
 //
 
 import Foundation
+import Combine
+
+@MainActor
+final class SessionManager: ObservableObject {
+    @Published var isLoggedIn: Bool
+
+    init() {
+        isLoggedIn = TokenStore.shared.accessToken != nil
+    }
+
+    func markLoggedIn() {
+        isLoggedIn = true
+    }
+
+    func markLoggedOut() {
+        isLoggedIn = false
+    }
+}

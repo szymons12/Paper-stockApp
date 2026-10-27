@@ -1,15 +1,36 @@
-//
-//  Top10View.swift
-//  Paper-Stock
-//
-//  Created by Szymon on 18/08/2026.
-//
 
 import SwiftUI
-
 struct Top10View: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Spacer()
+                    .frame(width: 200)
+                LogoutButton()
+            }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Most Active")
+                            .font(.title2)
+                            .bold()
+                        MostActiveView()
+                    }
+
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Top Movers")
+                            .font(.title2)
+                            .bold()
+                        TopMoversView()
+                    }
+
+                    CandlesView(symbol: "TSLA")
+                        .frame(height: 300)
+                }
+                .padding(.horizontal)
+                .padding(.vertical)
+            }
+        }
     }
 }
 

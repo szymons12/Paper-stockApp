@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct SearchResponse: Decodable {
+    let id: String
+    let stockClass: String
+    let exchange: String
+    let symbol: String
+    let name: String
+    let status: String
+    let tradable: Bool
+    let logoUrl: String
+}
