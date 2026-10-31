@@ -2,19 +2,15 @@
 //  WhoAmIView.swift
 //  Paper-Stock
 //
-//  Created by Szymon on 11/08/2026.
+//  Created by Szymon on 31/10/2026.
 //
 
 import SwiftUI
 
 struct WhoAmIView: View {
-    @StateObject private var viewModel = WhoAmIViewModel()
     var body: some View {
-        Text(viewModel.displayName)
-            .foregroundColor(.black)
-            .task {
-               await viewModel.fetchCurrentUser()
-            }}
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
 }
 
 #Preview {
